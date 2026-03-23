@@ -43,6 +43,7 @@ jobs:
 
       - name: Setup Pages (auto-enable if token is available)
         if: ${{ env.PAGES_DEPLOY_TOKEN != '' }}
+        id: setup_pages_auto
         uses: actions/configure-pages@v5
         with:
           enablement: true
@@ -50,7 +51,17 @@ jobs:
 
       - name: Setup Pages
         if: ${{ env.PAGES_DEPLOY_TOKEN == '' }}
+        id: setup_pages_manual
+        continue-on-error: true
         uses: actions/configure-pages@v5
+
+      - name: Explain missing Pages setup
+        if: ${{ env.PAGES_DEPLOY_TOKEN == '' && steps.setup_pages_manual.outcome == 'failure' }}
+        run: |
+          echo "GitHub Pages is not enabled for this repository yet."
+          echo "Enable Pages in Settings > Pages and choose GitHub Actions as the source,"
+          echo "or add a PAGES_DEPLOY_TOKEN repository secret so this workflow can enable Pages automatically."
+          exit 1
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
