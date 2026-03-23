@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gita - The Song of the Soul</title>
+<meta name="description" content="A serene digital sanctuary for the Bhagavad Gita - explore sacred shlokas with Sanskrit text, transliteration, and English meaning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gita.css">
+</head>
+<body>
+<header>
+  <div class="logo">
+    <div class="logo-symbol">ॐ</div>
+    <div class="logo-text">
+      <span class="logo-main">Gita</span>
+      <span class="logo-sub">Song of the Soul</span>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="icon-btn" id="searchToggleBtn" title="Search shlokas (press /)" type="button">🔍</button>
+    <button class="icon-btn" id="bookmarksToggleBtn" title="Saved bookmarks" type="button">🔖</button>
+    <button class="icon-btn" id="chaptersToggleBtn" title="Browse chapters" type="button">☰</button>
+    <button class="icon-btn" id="themeBtn" title="Toggle dark mode" type="button">☽</button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="searchInput" placeholder="Search by keyword, chapter, meaning...">
+      <button class="icon-btn" id="searchCloseBtn" type="button">✕</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <div class="overlay-bg" id="searchOverlayBg"></div>
+</div>
+
+<div class="share-modal" id="shareModal">
+  <div class="share-box">
+    <h3>Share this Shloka ✦</h3>
+    <div class="share-text" id="shareText"></div>
+    <button class="share-copy-btn" id="copyShareBtn" type="button">✦ Copy to Clipboard</button>
+  </div>
+  <div class="overlay-bg" id="shareOverlayBg"></div>
+</div>
+
+<div class="bookmarks-panel" id="bookmarksPanel">
+  <h3>🔖 Saved Shlokas</h3>
+  <div id="bookmarksList"></div>
+</div>
+
+<div class="chapter-panel" id="chapterPanel">
+  <h3>Browse Chapters</h3>
+  <ul class="chapter-list" id="chapterList"></ul>
+</div>
+
+<main>
+  <div class="daily-badge">
+    <span class="daily-dot"></span>
+    Verse of the Day
+  </div>
+
+  <div class="selector-bar">
+    <div class="selector-group">
+      <span class="selector-label">Chapter</span>
+      <select class="selector-select" id="chapterSelect"></select>
+    </div>
+    <div class="selector-group">
+      <span class="selector-label">Verse</span>
+      <select class="selector-select" id="verseSelect"></select>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-label">
+      <span id="progressLabel">Shloka 1</span>
+      <span id="progressTotal"></span>
+    </div>
+  </div>
+
+  <div class="shloka-card" id="shlokaCard">
+    <div class="card-watermark">ॐ</div>
+    <div class="shloka-ref" id="shlokaRef"></div>
+    <div class="shloka-sanskrit" id="shlokaSanskrit"></div>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-symbol">✦ ॐ ✦</div>
+      <div class="divider-line"></div>
+    </div>
+    <div class="shloka-transliteration" id="shlokaTranslit"></div>
+    <div class="divider-thin"></div>
+    <div class="shloka-meaning-label">English Meaning</div>
+    <div class="shloka-meaning" id="shlokaMeaning"></div>
+    <div class="card-actions">
+      <button class="action-btn" id="favoriteBtn" type="button">
+        <span id="favIcon">♡</span> Favorite
+      </button>
+      <button class="action-btn" id="shareBtn" type="button">↗ Share</button>
+      <button class="action-btn" id="bookmarkBtn" type="button">
+        <span id="bmIcon">🔖</span> Bookmark
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-controls">
+    <button class="nav-btn" id="prevBtn" type="button">← Previous</button>
+    <div class="nav-counter" id="navCounter"></div>
+    <button class="nav-btn" id="nextBtn" type="button">Next →</button>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="shlokas.js" defer></script>
+<script src="gita.js" defer></script>
+</body>
+</html>
