@@ -16,6 +16,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   deploy:
     environment:
@@ -26,15 +29,15 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Prepare site
         run: |
-          mkdir site
+          mkdir -p site/css site/js
           cp gita.html site/index.html
-          cp gita.css site/
-          cp gita.js site/
-          cp shlokas.js site/
+          cp css/gita.css site/css/
+          cp js/gita.js site/js/
+          cp js/shlokas.js site/js/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
