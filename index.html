@@ -19,11 +19,37 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bhagavad Gita Shlokas Online | Sanskrit, Transliteration and Meaning">
 <meta name="twitter:description" content="Read Bhagavad Gita shlokas online with Sanskrit text, transliteration, and English meaning. Search verses, browse chapters, and study the Gita online.">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1421770520205391" crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/gita.css">
+<script>
+  (function () {
+    const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1421770520205391";
+    let adsRequested = false;
+
+    function loadAds() {
+      if (adsRequested) return;
+      adsRequested = true;
+
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = ADSENSE_SRC;
+      script.crossOrigin = "anonymous";
+      document.head.appendChild(script);
+    }
+
+    function scheduleAdsLoad() {
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(loadAds, { timeout: 3000 });
+      } else {
+        window.setTimeout(loadAds, 2500);
+      }
+    }
+
+    window.addEventListener("load", scheduleAdsLoad, { once: true });
+    window.addEventListener("pointerdown", loadAds, { once: true, passive: true });
+    window.addEventListener("keydown", loadAds, { once: true });
+    window.addEventListener("touchstart", loadAds, { once: true, passive: true });
+  })();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
