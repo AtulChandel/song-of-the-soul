@@ -8,6 +8,7 @@ let searchOpen = false;
 let bmOpen = false;
 let chOpen = false;
 let toastT;
+let lastTrigger = null;
 
 const elements = {};
 
@@ -20,6 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function cacheElements() {
   elements.themeBtn = document.getElementById("themeBtn");
+  elements.searchToggleBtn = document.getElementById("searchToggleBtn");
+  elements.bookmarksToggleBtn = document.getElementById("bookmarksToggleBtn");
+  elements.chaptersToggleBtn = document.getElementById("chaptersToggleBtn");
+  elements.searchCloseBtn = document.getElementById("searchCloseBtn");
   elements.searchOverlay = document.getElementById("searchOverlay");
   elements.searchInput = document.getElementById("searchInput");
   elements.searchResults = document.getElementById("searchResults");
@@ -46,15 +51,17 @@ function cacheElements() {
   elements.bmIcon = document.getElementById("bmIcon");
   elements.shareModal = document.getElementById("shareModal");
   elements.shareText = document.getElementById("shareText");
+  elements.shareBtn = document.getElementById("shareBtn");
+  elements.copyShareBtn = document.getElementById("copyShareBtn");
   elements.toast = document.getElementById("toast");
 }
 
 function bindEvents() {
-  document.getElementById("searchToggleBtn").addEventListener("click", toggleSearch);
-  document.getElementById("searchCloseBtn").addEventListener("click", toggleSearch);
+  elements.searchToggleBtn.addEventListener("click", toggleSearch);
+  elements.searchCloseBtn.addEventListener("click", toggleSearch);
   document.getElementById("searchOverlayBg").addEventListener("click", toggleSearch);
-  document.getElementById("bookmarksToggleBtn").addEventListener("click", toggleBookmarks);
-  document.getElementById("chaptersToggleBtn").addEventListener("click", toggleChapters);
+  elements.bookmarksToggleBtn.addEventListener("click", toggleBookmarks);
+  elements.chaptersToggleBtn.addEventListener("click", toggleChapters);
   elements.themeBtn.addEventListener("click", toggleTheme);
   elements.searchInput.addEventListener("input", doSearch);
   elements.chapterSelect.addEventListener("change", onChapterChange);
@@ -63,8 +70,8 @@ function bindEvents() {
   elements.nextBtn.addEventListener("click", () => navigate(1));
   elements.favoriteBtn.addEventListener("click", toggleFavorite);
   elements.bookmarkBtn.addEventListener("click", toggleBookmarkCurrent);
-  document.getElementById("shareBtn").addEventListener("click", openShare);
-  document.getElementById("copyShareBtn").addEventListener("click", copyShare);
+  elements.shareBtn.addEventListener("click", openShare);
+  elements.copyShareBtn.addEventListener("click", copyShare);
   document.getElementById("shareOverlayBg").addEventListener("click", closeShare);
   document.addEventListener("keydown", handleKeydown);
 }
@@ -120,10 +127,20 @@ function buildChapterList() {
     const item = document.createElement("li");
     item.className = "chapter-item";
     item.dataset.ch = String(shloka.chapter);
+    item.tabIndex = 0;
+    item.setAttribute("role", "button");
+    item.setAttribute("aria-label", `Open chapter ${shloka.chapter}, ${shloka.chapterName}`);
     item.innerHTML = `<span class="ch-num">${shloka.chapter}</span><span>${shloka.chapterName}</span>`;
     item.addEventListener("click", () => {
       goToChapter(shloka.chapter);
       toggleChapters();
+    });
+    item.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        goToChapter(shloka.chapter);
+        toggleChapters();
+      }
     });
     elements.chapterList.appendChild(item);
   });
@@ -264,6 +281,7 @@ function updateFavoriteUI() {
   const active = favorites.includes(key(shlokas[idx]));
   elements.favIcon.textContent = active ? "❤️" : "♡";
   elements.favoriteBtn.classList.toggle("active", active);
+  elements.favoriteBtn.setAttribute("aria-pressed", String(active));
 }
 
 function toggleBookmarkCurrent() {
@@ -287,6 +305,7 @@ function updateBookmarkUI() {
   const active = bookmarks.includes(key(shlokas[idx]));
   elements.bmIcon.textContent = active ? "📌" : "🔖";
   elements.bookmarkBtn.classList.toggle("active", active);
+  elements.bookmarkBtn.setAttribute("aria-pressed", String(active));
 }
 
 function renderBookmarks() {
@@ -305,10 +324,20 @@ function renderBookmarks() {
 
     const item = document.createElement("div");
     item.className = "bookmark-item";
+    item.tabIndex = 0;
+    item.setAttribute("role", "button");
+    item.setAttribute("aria-label", `Open bookmarked chapter ${shloka.chapter} verse ${shloka.verse}`);
     item.innerHTML = `<div class="bookmark-ref">Chapter ${shloka.chapter} · Verse ${shloka.verse}</div><div class="bookmark-preview">${shloka.meaning}</div>`;
     item.addEventListener("click", () => {
       jumpTo(shlokas.indexOf(shloka));
       toggleBookmarks();
+    });
+    item.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        jumpTo(shlokas.indexOf(shloka));
+        toggleBookmarks();
+      }
     });
     elements.bookmarksList.appendChild(item);
   });
@@ -321,10 +350,15 @@ function key(shloka) {
 function toggleSearch() {
   searchOpen = !searchOpen;
   elements.searchOverlay.classList.toggle("active", searchOpen);
+  elements.searchOverlay.hidden = !searchOpen;
+  elements.searchToggleBtn.setAttribute("aria-expanded", String(searchOpen));
 
   if (searchOpen) {
+    lastTrigger = document.activeElement;
     window.setTimeout(() => elements.searchInput.focus(), 100);
     doSearch();
+  } else if (lastTrigger instanceof HTMLElement) {
+    lastTrigger.focus();
   }
 }
 
@@ -349,10 +383,20 @@ function doSearch() {
   matches.forEach((shloka) => {
     const item = document.createElement("div");
     item.className = "search-result-item";
+    item.tabIndex = 0;
+    item.setAttribute("role", "option");
+    item.setAttribute("aria-label", `Open chapter ${shloka.chapter} verse ${shloka.verse}`);
     item.innerHTML = `<div class="search-result-ref">Ch. ${shloka.chapter} · V. ${shloka.verse} - ${shloka.chapterName}</div><div class="search-result-text">${shloka.meaning.substring(0, 110)}...</div>`;
     item.addEventListener("click", () => {
       jumpTo(shlokas.indexOf(shloka));
       toggleSearch();
+    });
+    item.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        jumpTo(shlokas.indexOf(shloka));
+        toggleSearch();
+      }
     });
     elements.searchResults.appendChild(item);
   });
@@ -361,11 +405,15 @@ function doSearch() {
 function toggleBookmarks() {
   bmOpen = !bmOpen;
   elements.bookmarksPanel.classList.toggle("open", bmOpen);
+  elements.bookmarksPanel.hidden = !bmOpen;
+  elements.bookmarksToggleBtn.setAttribute("aria-expanded", String(bmOpen));
 }
 
 function toggleChapters() {
   chOpen = !chOpen;
   elements.chapterPanel.classList.toggle("open", chOpen);
+  elements.chapterPanel.hidden = !chOpen;
+  elements.chaptersToggleBtn.setAttribute("aria-expanded", String(chOpen));
 }
 
 function openShare() {
@@ -373,10 +421,17 @@ function openShare() {
   const shareText = `✦ Bhagavad Gita · Chapter ${shloka.chapter}, Verse ${shloka.verse}\n${shloka.chapterName}\n\n${shloka.sanskrit}\n\n"${shloka.meaning}"\n\n- Bhagavad Gita`;
   elements.shareText.textContent = shareText;
   elements.shareModal.classList.add("active");
+  elements.shareModal.hidden = false;
+  lastTrigger = document.activeElement;
+  window.setTimeout(() => elements.copyShareBtn.focus(), 50);
 }
 
 function closeShare() {
   elements.shareModal.classList.remove("active");
+  elements.shareModal.hidden = true;
+  if (lastTrigger instanceof HTMLElement) {
+    lastTrigger.focus();
+  }
 }
 
 async function copyShare() {
@@ -405,11 +460,28 @@ function toast(message) {
 }
 
 function handleKeydown(event) {
+  if (elements.shareModal.classList.contains("active") && event.key === "Escape") {
+    closeShare();
+    return;
+  }
+
   if (searchOpen) {
     if (event.key === "Escape") {
       toggleSearch();
     }
     return;
+  }
+
+  if (event.key === "Escape") {
+    if (bmOpen) {
+      toggleBookmarks();
+      return;
+    }
+
+    if (chOpen) {
+      toggleChapters();
+      return;
+    }
   }
 
   if (event.target.tagName === "SELECT" || event.target.tagName === "INPUT") {
