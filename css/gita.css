@@ -30,7 +30,7 @@ html {
 body {
   background-color: var(--cream);
   color: var(--text-primary);
-  font-family: "Crimson Pro", Georgia, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   line-height: 1.7;
   min-height: 100vh;
   overflow-x: hidden;
@@ -112,7 +112,7 @@ body.dark header {
   background: linear-gradient(135deg, var(--saffron), var(--gold-light));
   box-shadow: 0 2px 14px rgba(200, 115, 58, 0.32);
   color: #fff;
-  font-family: "Tiro Devanagari Sanskrit", serif;
+  font-family: "Noto Serif Devanagari", "Kohinoor Devanagari", "Devanagari Sangam MN", serif;
   font-size: 1.05rem;
 }
 
@@ -124,7 +124,7 @@ body.dark header {
 
 .logo-main {
   color: var(--text-primary);
-  font-family: "Playfair Display", serif;
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -132,7 +132,7 @@ body.dark header {
 
 .logo-sub {
   color: var(--text-muted);
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.7rem;
   font-style: italic;
   letter-spacing: 0.12em;
@@ -218,7 +218,7 @@ body.dark header {
   background: none;
   border: none;
   color: var(--text-primary);
-  font-family: "Playfair Display", serif;
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: 1.25rem;
   outline: none;
 }
@@ -251,7 +251,7 @@ body.dark header {
 .search-result-ref {
   margin-bottom: 0.25rem;
   color: var(--saffron);
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -292,7 +292,7 @@ body.dark header {
 .chapter-panel h3 {
   margin-bottom: 1.5rem;
   color: var(--saffron);
-  font-family: "Playfair Display", serif;
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: 0.85rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -324,7 +324,7 @@ body.dark header {
 .chapter-item .ch-num {
   min-width: 26px;
   color: var(--saffron);
-  font-family: "Playfair Display", serif;
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-weight: 600;
 }
 
@@ -350,7 +350,7 @@ body.dark header {
 .bookmarks-panel h3 {
   margin-bottom: 1.5rem;
   color: var(--saffron);
-  font-family: "Playfair Display", serif;
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: 0.85rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -373,7 +373,7 @@ body.dark header {
 .bookmark-ref {
   margin-bottom: 0.3rem;
   color: var(--saffron);
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -434,7 +434,7 @@ body.dark header {
 .share-box h3 {
   margin-bottom: 1rem;
   color: var(--text-primary);
-  font-family: "Playfair Display", serif;
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: 1.15rem;
 }
 
@@ -447,7 +447,7 @@ body.dark header {
   border: 1px solid var(--border-soft);
   border-radius: 12px;
   color: var(--text-secondary);
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.88rem;
   line-height: 1.75;
   white-space: pre-wrap;
@@ -461,7 +461,7 @@ body.dark header {
   border-radius: 12px;
   color: #fff;
   cursor: pointer;
-  font-family: "Playfair Display", serif;
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: 0.95rem;
   transition: background 0.2s, transform 0.15s;
 }
@@ -498,7 +498,7 @@ main {
 .hero-intro h1 {
   margin-bottom: 0.85rem;
   color: var(--text-primary);
-  font-family: "Playfair Display", serif;
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -523,7 +523,7 @@ main {
   border: 1px solid rgba(200, 115, 58, 0.22);
   border-radius: 50px;
   color: var(--saffron);
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -573,7 +573,7 @@ main {
 
 .selector-label {
   color: var(--text-muted);
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -585,7 +585,7 @@ main {
   border: none;
   color: var(--text-primary);
   cursor: pointer;
-  font-family: "Playfair Display", serif;
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: 0.9rem;
   outline: none;
 }
@@ -615,7 +615,7 @@ main {
   justify-content: space-between;
   margin-top: 0.4rem;
   color: var(--text-muted);
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.7rem;
   letter-spacing: 0.06em;
 }
@@ -660,7 +660,7 @@ body.dark .shloka-card {
   right: 1rem;
   bottom: -1rem;
   color: var(--saffron);
-  font-family: "Tiro Devanagari Sanskrit", serif;
+  font-family: "Noto Serif Devanagari", "Kohinoor Devanagari", "Devanagari Sangam MN", serif;
   font-size: 8rem;
   line-height: 1;
   opacity: 0.04;
@@ -675,7 +675,7 @@ body.dark .shloka-card {
   gap: 0.6rem;
   margin-bottom: 2rem;
   color: var(--saffron);
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -693,7 +693,7 @@ body.dark .shloka-card {
 
 .shloka-sanskrit {
   color: var(--text-primary);
-  font-family: "Tiro Devanagari Sanskrit", serif;
+  font-family: "Noto Serif Devanagari", "Kohinoor Devanagari", "Devanagari Sangam MN", serif;
   font-size: clamp(1.35rem, 3.5vw, 1.85rem);
   letter-spacing: 0.02em;
   line-height: 2;
@@ -733,7 +733,7 @@ body.dark .shloka-card {
 
 .shloka-transliteration {
   color: var(--text-secondary);
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-style: italic;
   letter-spacing: 0.01em;
@@ -751,7 +751,7 @@ body.dark .shloka-card {
 .shloka-meaning-label {
   margin-bottom: 0.7rem;
   color: var(--text-muted);
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-align: center;
@@ -760,7 +760,7 @@ body.dark .shloka-card {
 
 .shloka-meaning {
   color: var(--text-secondary);
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: clamp(1.05rem, 2.5vw, 1.2rem);
   font-weight: 300;
   line-height: 1.9;
@@ -788,7 +788,7 @@ body.dark .shloka-card {
   border-radius: 50px;
   color: var(--text-muted);
   cursor: pointer;
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.84rem;
   letter-spacing: 0.03em;
   transition: all 0.25s;
@@ -819,7 +819,7 @@ body.dark .shloka-card {
   border-radius: 50px;
   color: var(--text-secondary);
   cursor: pointer;
-  font-family: "Playfair Display", serif;
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: 0.9rem;
   transition: all 0.3s;
   white-space: nowrap;
@@ -841,7 +841,7 @@ body.dark .shloka-card {
 .nav-counter {
   min-width: 56px;
   color: var(--text-muted);
-  font-family: "Playfair Display", serif;
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: 0.82rem;
   letter-spacing: 0.05em;
   text-align: center;
@@ -856,7 +856,7 @@ body.dark .shloka-card {
   background: var(--deep-brown);
   border-radius: 50px;
   color: var(--cream);
-  font-family: "Crimson Pro", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.9rem;
   pointer-events: none;
   transform: translateX(-50%) translateY(120px);
