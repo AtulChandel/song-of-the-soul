@@ -488,6 +488,31 @@ main {
   padding: 96px 1.5rem 5rem;
 }
 
+.hero-intro {
+  width: min(720px, 100%);
+  margin-bottom: 2rem;
+  text-align: center;
+  animation: fadeDown 0.9s 0.08s ease both;
+}
+
+.hero-intro h1 {
+  margin-bottom: 0.85rem;
+  color: var(--text-primary);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+
+.hero-copy {
+  width: min(640px, 100%);
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 2.2vw, 1.12rem);
+  line-height: 1.85;
+}
+
 .daily-badge {
   display: inline-flex;
   align-items: center;
@@ -925,5 +950,13 @@ body.dark .toast {
   .selector-select {
     max-width: 150px;
     font-size: 0.82rem;
+  }
+
+  .hero-intro {
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-intro h1 {
+    font-size: clamp(1.75rem, 8vw, 2.4rem);
   }
 }
