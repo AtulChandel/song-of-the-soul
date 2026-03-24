@@ -33,6 +33,8 @@ jobs:
           mkdir -p site/css site/js
           cp index.html site/index.html
           cp CNAME site/CNAME
+          cp robots.txt site/robots.txt
+          cp sitemap.xml site/sitemap.xml
           cp css/gita.css site/css/
           cp js/gita.js site/js/
           cp js/shlokas.js site/js/
