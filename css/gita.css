@@ -2,7 +2,7 @@
   --cream: #faf6ef;
   --parchment: #f2ead8;
   --warm-beige: #e8dcc8;
-  --saffron: #c8733a;
+  --saffron: #9f4f20;
   --saffron-soft: #e8a060;
   --saffron-pale: #f5ddc0;
   --gold: #b8860b;
@@ -11,7 +11,7 @@
   --medium-brown: #6b4c35;
   --text-primary: #2c1f14;
   --text-secondary: #5a4030;
-  --text-muted: #9a7a60;
+  --text-muted: #70513d;
   --border-soft: rgba(180, 140, 100, 0.2);
 }
 
@@ -25,6 +25,18 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 body {
@@ -44,7 +56,7 @@ body.dark {
   --border-soft: rgba(180, 150, 80, 0.14);
   --text-primary: #ece3d0;
   --text-secondary: #c8b89a;
-  --text-muted: #7a6a98;
+  --text-muted: #b7add1;
   --saffron: #d4a843;
   --saffron-soft: #e8c060;
   --saffron-pale: rgba(180, 130, 40, 0.13);
@@ -163,6 +175,16 @@ body.dark header {
 .icon-btn:hover {
   background: var(--saffron-pale);
   color: var(--saffron);
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+.search-result-item:focus-visible,
+.bookmark-item:focus-visible,
+.chapter-item:focus-visible {
+  outline: 3px solid rgba(159, 79, 32, 0.28);
+  outline-offset: 3px;
 }
 
 .search-overlay {
@@ -616,7 +638,7 @@ main {
   margin-top: 0.4rem;
   color: var(--text-muted);
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
 }
 
@@ -676,7 +698,7 @@ body.dark .shloka-card {
   margin-bottom: 2rem;
   color: var(--saffron);
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -752,7 +774,7 @@ body.dark .shloka-card {
   margin-bottom: 0.7rem;
   color: var(--text-muted);
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 0.68rem;
+  font-size: 0.74rem;
   letter-spacing: 0.18em;
   text-align: center;
   text-transform: uppercase;
@@ -786,7 +808,7 @@ body.dark .shloka-card {
   background: none;
   border: 1px solid var(--border-soft);
   border-radius: 50px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   cursor: pointer;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 0.84rem;
@@ -840,7 +862,7 @@ body.dark .shloka-card {
 
 .nav-counter {
   min-width: 56px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: 0.82rem;
   letter-spacing: 0.05em;
@@ -871,6 +893,20 @@ body.dark .toast {
 
 .toast.show {
   transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @keyframes fadeIn {

@@ -95,54 +95,57 @@
 <body>
 <header>
   <div class="logo">
-    <div class="logo-symbol">ॐ</div>
+    <div class="logo-symbol" aria-hidden="true">ॐ</div>
     <div class="logo-text">
       <span class="logo-main">Gita</span>
       <span class="logo-sub">Song of the Soul</span>
     </div>
   </div>
   <div class="header-actions">
-    <button class="icon-btn" id="searchToggleBtn" title="Search shlokas (press /)" type="button">🔍</button>
-    <button class="icon-btn" id="bookmarksToggleBtn" title="Saved bookmarks" type="button">🔖</button>
-    <button class="icon-btn" id="chaptersToggleBtn" title="Browse chapters" type="button">☰</button>
-    <button class="icon-btn" id="themeBtn" title="Toggle dark mode" type="button">☽</button>
+    <button class="icon-btn" id="searchToggleBtn" title="Search shlokas (press /)" type="button" aria-label="Open search" aria-controls="searchOverlay" aria-expanded="false">🔍</button>
+    <button class="icon-btn" id="bookmarksToggleBtn" title="Saved bookmarks" type="button" aria-label="Open saved bookmarks" aria-controls="bookmarksPanel" aria-expanded="false">🔖</button>
+    <button class="icon-btn" id="chaptersToggleBtn" title="Browse chapters" type="button" aria-label="Open chapter list" aria-controls="chapterPanel" aria-expanded="false">☰</button>
+    <button class="icon-btn" id="themeBtn" title="Toggle dark mode" type="button" aria-label="Toggle dark mode">☽</button>
   </div>
 </header>
 
-<div class="search-overlay" id="searchOverlay">
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-labelledby="searchTitle" hidden>
   <div class="search-box">
+    <h2 class="sr-only" id="searchTitle">Search Bhagavad Gita shlokas</h2>
     <div class="search-input-wrap">
-      <span class="search-icon">🔍</span>
-      <input class="search-input" id="searchInput" placeholder="Search by keyword, chapter, meaning...">
-      <button class="icon-btn" id="searchCloseBtn" type="button">✕</button>
+      <label class="sr-only" for="searchInput">Search shlokas</label>
+      <span class="search-icon" aria-hidden="true">🔍</span>
+      <input class="search-input" id="searchInput" type="search" autocomplete="off" placeholder="Search by keyword, chapter, meaning..." aria-describedby="searchHelp">
+      <button class="icon-btn" id="searchCloseBtn" type="button" aria-label="Close search">✕</button>
     </div>
-    <div class="search-results" id="searchResults"></div>
+    <p class="sr-only" id="searchHelp">Search by chapter name, transliteration, Sanskrit text, or English meaning.</p>
+    <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
   </div>
   <div class="overlay-bg" id="searchOverlayBg"></div>
 </div>
 
-<div class="share-modal" id="shareModal">
+<div class="share-modal" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareTitle" hidden>
   <div class="share-box">
-    <h3>Share this Shloka ✦</h3>
+    <h3 id="shareTitle">Share this Shloka ✦</h3>
     <div class="share-text" id="shareText"></div>
     <button class="share-copy-btn" id="copyShareBtn" type="button">✦ Copy to Clipboard</button>
   </div>
   <div class="overlay-bg" id="shareOverlayBg"></div>
 </div>
 
-<div class="bookmarks-panel" id="bookmarksPanel">
-  <h3>🔖 Saved Shlokas</h3>
+<aside class="bookmarks-panel" id="bookmarksPanel" aria-labelledby="bookmarksHeading" hidden>
+  <h3 id="bookmarksHeading">🔖 Saved Shlokas</h3>
   <div id="bookmarksList"></div>
-</div>
+</aside>
 
-<div class="chapter-panel" id="chapterPanel">
-  <h3>Browse Chapters</h3>
+<aside class="chapter-panel" id="chapterPanel" aria-labelledby="chaptersHeading" hidden>
+  <h3 id="chaptersHeading">Browse Chapters</h3>
   <ul class="chapter-list" id="chapterList"></ul>
-</div>
+</aside>
 
 <main id="main-content">
   <div class="daily-badge">
-    <span class="daily-dot"></span>
+    <span class="daily-dot" aria-hidden="true"></span>
     Verse of the Day
   </div>
 
@@ -155,11 +158,11 @@
 
   <div class="selector-bar">
     <div class="selector-group">
-      <span class="selector-label">Chapter</span>
+      <label class="selector-label" for="chapterSelect">Chapter</label>
       <select class="selector-select" id="chapterSelect"></select>
     </div>
     <div class="selector-group">
-      <span class="selector-label">Verse</span>
+      <label class="selector-label" for="verseSelect">Verse</label>
       <select class="selector-select" id="verseSelect"></select>
     </div>
   </div>
@@ -169,18 +172,18 @@
       <div class="progress-bar-fill" id="progressFill"></div>
     </div>
     <div class="progress-label">
-      <span id="progressLabel">Shloka 1</span>
+      <span id="progressLabel" aria-live="polite">Shloka 1</span>
       <span id="progressTotal"></span>
     </div>
   </div>
 
   <div class="shloka-card" id="shlokaCard">
-    <div class="card-watermark">ॐ</div>
-    <div class="shloka-ref" id="shlokaRef"></div>
+    <div class="card-watermark" aria-hidden="true">ॐ</div>
+    <div class="shloka-ref" id="shlokaRef" aria-live="polite"></div>
     <div class="shloka-sanskrit" id="shlokaSanskrit"></div>
     <div class="divider">
       <div class="divider-line"></div>
-      <div class="divider-symbol">✦ ॐ ✦</div>
+      <div class="divider-symbol" aria-hidden="true">✦ ॐ ✦</div>
       <div class="divider-line"></div>
     </div>
     <div class="shloka-transliteration" id="shlokaTranslit"></div>
@@ -200,12 +203,12 @@
 
   <div class="nav-controls">
     <button class="nav-btn" id="prevBtn" type="button">← Previous</button>
-    <div class="nav-counter" id="navCounter"></div>
+    <div class="nav-counter" id="navCounter" aria-live="polite"></div>
     <button class="nav-btn" id="nextBtn" type="button">Next →</button>
   </div>
 </main>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
 
 <script src="js/shlokas.js" defer></script>
 <script src="js/gita.js" defer></script>
