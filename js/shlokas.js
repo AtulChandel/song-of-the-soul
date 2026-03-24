@@ -11,7 +11,7 @@ window.SHLOKAS = [
     chapter: 1,
     verse: 2,
     chapterName: "Arjuna Viṣāda Yoga",
-    sanskrit: "सञ्जय उवाच ।\nदृष्ट्वा तु पाण्डवानीकं व्यूढं दुर्योधनस्तदा ।\nआचार्यमुपसङ्गम्य राजा वचनमब्रवीत् ।। 2।।",
+    sanskrit: "सञ्जय उवाच |\nदृष्ट्वा तु पाण्डवानीकं व्यूढं दुर्योधनस्तदा |\nआचार्यमुपसङ्गम्य राजा वचनमब्रवीत् ॥",
     transliteration: "sañjaya uvācha |\ndṛiṣhṭvā tu pāṇḍavānīkaṁ vyūḍhaṁ duryodhanastadā |\nāchāryamupasaṅgamya rājā vachanamabravīt",
     meaning: "Sanjay said: On observing the Pandava army standing in military formation, King Duryodhan approached his teacher Dronacharya, and said the following words."
   },
