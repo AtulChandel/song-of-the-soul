@@ -535,6 +535,77 @@ main {
   line-height: 1.85;
 }
 
+.content-section {
+  width: min(720px, 100%);
+  margin-bottom: 2rem;
+  padding: 1.6rem 1.7rem;
+  background: rgba(242, 234, 216, 0.72);
+  border: 1px solid var(--border-soft);
+  border-radius: 24px;
+  animation: fadeDown 0.9s 0.12s ease both;
+}
+
+.content-section h2 {
+  margin-bottom: 0.8rem;
+  color: var(--text-primary);
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.content-section p {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.85;
+}
+
+.content-section p + p {
+  margin-top: 0.8rem;
+}
+
+.content-section-soft {
+  background: rgba(245, 221, 192, 0.36);
+}
+
+.content-grid {
+  width: min(720px, 100%);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+  animation: fadeDown 0.9s 0.14s ease both;
+}
+
+.content-card {
+  padding: 1.2rem 1.15rem;
+  background: var(--parchment);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+}
+
+.content-card h2 {
+  margin-bottom: 0.55rem;
+  color: var(--text-primary);
+  font-family: Baskerville, "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.content-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.content-list {
+  padding-left: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.content-list li + li {
+  margin-top: 0.5rem;
+}
+
 .daily-badge {
   display: inline-flex;
   align-items: center;
@@ -906,6 +977,12 @@ body.dark .toast {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .content-grid {
+    grid-template-columns: 1fr;
   }
 }
 
