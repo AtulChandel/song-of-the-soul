@@ -20,36 +20,6 @@
 <meta name="twitter:title" content="Bhagavad Gita Shlokas Online | Sanskrit, Transliteration and Meaning">
 <meta name="twitter:description" content="Read Bhagavad Gita shlokas online with Sanskrit text, transliteration, and English meaning. Search verses, browse chapters, and study the Gita online.">
 <link rel="stylesheet" href="css/gita.css">
-<script>
-  (function () {
-    const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1421770520205391";
-    let adsRequested = false;
-
-    function loadAds() {
-      if (adsRequested) return;
-      adsRequested = true;
-
-      const script = document.createElement("script");
-      script.async = true;
-      script.src = ADSENSE_SRC;
-      script.crossOrigin = "anonymous";
-      document.head.appendChild(script);
-    }
-
-    function scheduleAdsLoad() {
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(loadAds, { timeout: 3000 });
-      } else {
-        window.setTimeout(loadAds, 2500);
-      }
-    }
-
-    window.addEventListener("load", scheduleAdsLoad, { once: true });
-    window.addEventListener("pointerdown", loadAds, { once: true, passive: true });
-    window.addEventListener("keydown", loadAds, { once: true });
-    window.addEventListener("touchstart", loadAds, { once: true, passive: true });
-  })();
-</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -156,6 +126,31 @@
     </p>
   </section>
 
+  <section class="content-section" aria-labelledby="aboutTitle">
+    <h2 id="aboutTitle">Why This Gita Reader Exists</h2>
+    <p>
+      This page is designed for simple, focused study of the Bhagavad Gita. Each verse is presented with the original Sanskrit, an accessible transliteration, and a clear English meaning so readers can move between sound, structure, and sense without distraction.
+    </p>
+    <p>
+      Instead of opening multiple tabs or switching between reference tools, you can browse chapters, jump to individual verses, save bookmarks for revision, and search by ideas such as duty, devotion, action, self-knowledge, and equanimity.
+    </p>
+  </section>
+
+  <section class="content-grid" aria-label="Study highlights">
+    <article class="content-card">
+      <h2>What You Can Read Here</h2>
+      <p>Every verse view includes chapter and verse reference, Sanskrit text, transliteration for pronunciation support, and an English meaning for quick understanding.</p>
+    </article>
+    <article class="content-card">
+      <h2>How To Use It</h2>
+      <p>Choose a chapter, move verse by verse, search by theme, and bookmark shlokas you want to revisit during daily reading or memorization.</p>
+    </article>
+    <article class="content-card">
+      <h2>Who It Helps</h2>
+      <p>This layout is useful for first-time readers, regular devotees, students comparing verses, and anyone who wants a lightweight Gita reference on mobile.</p>
+    </article>
+  </section>
+
   <div class="selector-bar">
     <div class="selector-group">
       <label class="selector-label" for="chapterSelect">Chapter</label>
@@ -206,6 +201,17 @@
     <div class="nav-counter" id="navCounter" aria-live="polite"></div>
     <button class="nav-btn" id="nextBtn" type="button">Next →</button>
   </div>
+
+  <section class="content-section content-section-soft" aria-labelledby="studyTipsTitle">
+    <h2 id="studyTipsTitle">Simple Ways To Study One Verse Well</h2>
+    <ul class="content-list">
+      <li>Read the Sanskrit slowly once to recognize the verse visually.</li>
+      <li>Use the transliteration to speak the line aloud and notice rhythm and repetition.</li>
+      <li>Read the meaning twice and ask what principle is being taught.</li>
+      <li>Bookmark verses that connect with action, discipline, surrender, or inner steadiness.</li>
+      <li>Return to the same verse later and compare your understanding after reflection.</li>
+    </ul>
+  </section>
 </main>
 
 <div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
